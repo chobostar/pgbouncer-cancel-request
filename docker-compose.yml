@@ -1,0 +1,39 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:9.4
+    ports:
+      - 5432:5432
+  pgbouncer172:
+    build:
+      context: .
+      args:
+        pgbversion: 1.7.2
+    volumes:
+      - .:/vol
+    links:
+      - postgres
+    ports:
+      - 6432:6432
+  pgbouncer181:
+    build:
+      context: .
+      args:
+        pgbversion: 1.8.1
+    volumes:
+      - .:/vol
+    links:
+      - postgres
+    ports:
+      - 6433:6432
+  pgbouncer190:
+    build:
+      context: .
+      args:
+        pgbversion: 1.9.0
+    volumes:
+      - .:/vol
+    links:
+      - postgres
+    ports:
+      - 6434:6432
