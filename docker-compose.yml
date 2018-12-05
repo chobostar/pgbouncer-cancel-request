@@ -37,3 +37,16 @@ services:
       - postgres
     ports:
       - 6434:6432
+  pgbouncer190_2:
+    build:
+      context: .
+      args:
+        pgbversion: 1.9.0
+    volumes:
+      - .:/vol
+    links:
+      - pgbouncer190
+    ports:
+      - 6435:6432
+    environment:
+      - PGBOUNCER_INI_PATH=/vol/pgbouncer2.ini

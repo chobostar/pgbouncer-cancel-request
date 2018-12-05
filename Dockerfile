@@ -2,6 +2,8 @@ FROM alpine:3.7
 
 ARG pgbversion
 
+ENV PGBOUNCER_INI_PATH /vol/pgbouncer.ini
+
 RUN apk --update add autoconf autoconf-doc automake c-ares c-ares-dev curl gcc libc-dev libevent libevent-dev libtool make man libressl-dev pkgconfig
 
 RUN \
@@ -22,4 +24,4 @@ RUN \
   rm -rf /tmp/pgbouncer*  && \
   apk del --purge autoconf autoconf-doc automake c-ares-dev curl gcc libc-dev libevent-dev libtool make man libressl-dev pkgconfig
 
-CMD ["/usr/bin/pgbouncer", "/vol/pgbouncer.ini", "-u", "nobody"]
+CMD ["sh", "-c", "/usr/bin/pgbouncer $PGBOUNCER_INI_PATH -u nobody"]
