@@ -1,4 +1,4 @@
-test:
-	@go test -v -timeout 1m
+run:
+	@go run main.go
 
-PHONY: test
+PHONY: run
