@@ -17,4 +17,10 @@ services:
     links:
       - postgres
     ports:
-      - 6432:6432
+      - "6432:6432"
+  odyssey:
+    build: odyssey/.
+    ports:
+      - "6532:6432"
+    volumes:
+      - ./odyssey.conf:/etc/odyssey/odyssey.conf
