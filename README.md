@@ -30,7 +30,7 @@ and it's okay
 
 ## Check killed client
 
-1. Start 2 queries:
+1. Start 3 queries:
 - first:
 ```
 $ PGAPPNAME=pgbouncer psql -U postgres -p 6432 -h localhost -d db -c "select pg_sleep(3600)"
@@ -38,6 +38,10 @@ $ PGAPPNAME=pgbouncer psql -U postgres -p 6432 -h localhost -d db -c "select pg_
 - second:
 ```
 $ PGAPPNAME=odyssey psql -U postgres -p 6532 -h localhost -d db -c "select pg_sleep(3600)"
+```
+- third:
+```
+$ PGAPPNAME=psql psql -U postgres -p 5432 -h localhost -d postgres -c "select pg_sleep(3600)"
 ```
 
 2. Kill both
@@ -52,5 +56,6 @@ $ psql -U postgres -h localhost -c "select application_name from pg_stat_activit
  application_name 
 ------------------
  pgbouncer
-(1 row)
+ psql
+(2 rows)
 ```
