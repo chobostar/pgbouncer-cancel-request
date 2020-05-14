@@ -9,7 +9,7 @@ services:
       POSTGRES_HOST_AUTH_METHOD: "trust"
   pgbouncer:
     build:
-      context: .
+      context: pgbouncer/.
       args:
         pgbversion: 1.12.0
     volumes:
@@ -19,7 +19,10 @@ services:
     ports:
       - "6432:6432"
   odyssey:
-    build: odyssey/.
+    build:
+      context: odyssey/.
+      args:
+        version: 1.1
     ports:
       - "6532:6432"
     volumes:

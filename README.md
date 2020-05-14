@@ -28,6 +28,12 @@ $ make run_odyssey
 
 and it's okay
 
+## Check stats output diffs
+
+```
+$ make test_stats
+```
+
 ## Check killed client
 
 1. Start 3 queries:
